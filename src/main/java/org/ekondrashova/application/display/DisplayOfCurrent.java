@@ -1,5 +1,6 @@
 package org.ekondrashova.application.display;
 
+import org.ekondrashova.application.logger.LogManager;
 import org.ekondrashova.application.sensor.impl.HumiditySensor;
 import org.ekondrashova.application.sensor.impl.PressureSensor;
 import org.ekondrashova.application.sensor.impl.TemperatureSensor;
@@ -31,13 +32,14 @@ public class DisplayOfCurrent extends Display {
 
     @Override
     public void show() {
-        System.out.println("--------------------------------------------------");
-        System.out.println("Дата: " + dateFormatter.format(LocalDate.now()));
-        System.out.println("Время: " + timeFormatter.format(LocalTime.now()));
-        System.out.println("Влажность: " + humiditySensor.currentHumidity());
-        System.out.println("Давление: " + pressureSensor.currentPressure());
-        System.out.println("Температура: " + temperatureSensor.currentTemperature());
-        System.out.println("Влажность: " + windSpeedSensor.currentSpeed());
-        System.out.println("Направление ветра: " + windDirectionSensor.getDirection().toString() + "\n");
+        LogManager.getLogger().info("--------------------------------------------------");
+        LogManager.getLogger().info("Текущее: ");
+        LogManager.getLogger().info("Дата: {}", dateFormatter.format(LocalDate.now()));
+        LogManager.getLogger().info("Время: {}", timeFormatter.format(LocalTime.now()));
+        LogManager.getLogger().info("Влажность: {}", humiditySensor.currentHumidity());
+        LogManager.getLogger().info("Давление: {}", pressureSensor.currentPressure());
+        LogManager.getLogger().info("Температура: {}", temperatureSensor.currentTemperature());
+        LogManager.getLogger().info("Влажность: {}", windSpeedSensor.currentSpeed());
+        LogManager.getLogger().info("Направление ветра: {}", windDirectionSensor.getDirection().toString());
     }
 }

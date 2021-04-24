@@ -8,6 +8,7 @@
 
 *.log.*
 *.log
+logs.txt
 /.classpath
 /.project
 .settings/
@@ -26,3 +27,5 @@
 *.png
 
 *.jpeg
+
+*.jpg

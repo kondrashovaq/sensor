@@ -5,6 +5,9 @@ import org.ekondrashova.application.display.DisplayOfCurrent;
 import org.ekondrashova.application.display.DisplayManager;
 import org.ekondrashova.application.display.DisplayOfHighLow;
 import org.ekondrashova.application.event.SensorEventService;
+import org.ekondrashova.application.logger.LogLevel;
+import org.ekondrashova.application.logger.LogManager;
+import org.ekondrashova.application.logger.LogOptions;
 import org.ekondrashova.application.model.Event;
 import org.ekondrashova.application.model.EventType;
 import org.ekondrashova.application.sensor.impl.HumiditySensor;
@@ -16,8 +19,17 @@ import org.ekondrashova.application.sensor.impl.WindSpeedSensor;
 public class Application {
     private static final DisplayManager displayManager = new DisplayManager();
     private static final SensorEventService sensorEventService = new SensorEventService();
+    private static final String path = "src/logs.txt";
 
     public static void main(String[] args) {
+        LogOptions logOptions = LogOptions.builder()
+                .enabled(true)
+                .needLogToFile(true)
+                .logLevel(LogLevel.INFO)
+                .path(path)
+                .build();
+
+        LogManager.getLogger().setLogOptions(logOptions);
 
         HumiditySensor humiditySensor = new HumiditySensor();
         PressureSensor pressureSensor = new PressureSensor();

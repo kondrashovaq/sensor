@@ -1,5 +1,6 @@
 package org.ekondrashova.application.display;
 
+import org.ekondrashova.application.logger.LogManager;
 import org.ekondrashova.application.sensor.impl.HumiditySensor;
 import org.ekondrashova.application.sensor.impl.PressureSensor;
 import org.ekondrashova.application.sensor.impl.TemperatureSensor;
@@ -26,17 +27,17 @@ public class DisplayOfHighLow extends Display {
 
     @Override
     public void show() {
-        System.out.println("--------------------------------------------------");
-        System.out.println("Максимальное: ");
-        System.out.println("Влажность: " + humiditySensor.highHumidity());
-        System.out.println("Давление: " + pressureSensor.highPressure());
-        System.out.println("Температура: " + temperatureSensor.highTemperature());
-        System.out.println("Влажность: " + windSpeedSensor.highSpeed());
-        System.out.println("--------------------------------------------------");
-        System.out.println("Минимальное: ");
-        System.out.println("Влажность: " + humiditySensor.lowHumidity());
-        System.out.println("Давление: " + pressureSensor.lowPressure());
-        System.out.println("Температура: " + temperatureSensor.lowTemperature());
-        System.out.println("Влажность: " + windSpeedSensor.lowSpeed());
+        LogManager.getLogger().info("--------------------------------------------------");
+        LogManager.getLogger().info("Максимальное: ");
+        LogManager.getLogger().info("Влажность: {}", humiditySensor.highHumidity());
+        LogManager.getLogger().info("Давление: {}", pressureSensor.highPressure());
+        LogManager.getLogger().info("Температура: {}", temperatureSensor.highTemperature());
+        LogManager.getLogger().info("Влажность: {}", windSpeedSensor.highSpeed());
+        LogManager.getLogger().info("--------------------------------------------------");
+        LogManager.getLogger().info("Минимальное: ");
+        LogManager.getLogger().info("Влажность: {}", humiditySensor.lowHumidity());
+        LogManager.getLogger().info("Давление: {}", pressureSensor.lowPressure());
+        LogManager.getLogger().info("Температура: {}", temperatureSensor.lowTemperature());
+        LogManager.getLogger().info("Влажность: {}", windSpeedSensor.lowSpeed());
     }
 }
