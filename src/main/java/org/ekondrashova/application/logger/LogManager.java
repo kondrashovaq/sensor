@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Collections;
 import java.util.Objects;
 
 public class LogManager {
@@ -75,7 +76,7 @@ public class LogManager {
 
     private void logToFile(String logMessage) {
         try {
-            Files.write(logOptions.getPath(), (logMessage + "\n").getBytes(), openOptions);
+            Files.write(logOptions.getPath(), Collections.singleton(logMessage), openOptions);
         } catch (IOException e) {
             e.printStackTrace();
         }
